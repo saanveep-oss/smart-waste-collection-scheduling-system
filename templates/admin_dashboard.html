@@ -1,0 +1,237 @@
+<!--<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<div class="card">
+
+<h2>View Users</h2>
+
+<a href="/view_users">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>View Pickup Requests</h2>
+
+<a href="/view_requests">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Manage Schedules</h2>
+
+<a href="/manage_schedules">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Analytics</h2>
+
+<a href="/analytics">
+Open
+</a>
+
+</div>
+
+</body>
+
+</html>-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %} 
+
+<h2 style="text-align:center;
+margin-top:20px;">
+
+Welcome Admin
+
+</h2>
+
+<h1>Admin Dashboard</h1>
+
+<div class="info-section">
+
+<div class="card">
+
+<h2>Total Users</h2>
+
+<h1>{{ total_users }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Total Requests</h2>
+
+<h1>{{ total_requests }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Pending Requests</h2>
+
+<h1>{{ pending_requests }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Approved Requests</h2>
+
+<h1>{{ approved_requests }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Completed Requests</h2>
+
+<h1>{{ completed_requests }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Missed Requests</h2>
+
+<h1>{{ missed_requests }}</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Rejected Requests</h2>
+
+<h1>{{ rejected_requests }}</h1>
+
+</div>
+
+</div>
+
+<div class="info-section">
+
+<div class="card">
+
+<h2>Registered Users</h2>
+
+<p>
+View all registered users
+</p>
+
+<a href="/view_users">
+Manage Users
+</a>
+
+</div>
+
+<div class="card">
+
+<!--<h2>Pickup Requests</h2>-->
+<h2>Waste Pickup Management</h2>
+
+<p>
+Manage waste pickup requests
+</p>
+
+<a href="/view_requests">
+Manage Requests
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Collection Schedule Management</h2>
+
+<p>
+Manage area schedules
+</p>
+
+<a href="/manage_schedules">
+Manage Schedules
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Manage Areas</h2>
+
+<p>
+Add or remove city areas
+</p>
+
+<a href="/manage_areas">
+Manage Areas
+</a>
+
+</div>
+<div class="card">
+
+<h2>Special Pickup Management</h2>
+
+<p>
+
+Manage priority pickup requests
+
+</p>
+
+<a href="/view_special_requests">
+
+Manage Requests
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Waste Analytics Dashboard</h2>
+
+<p>
+Area-wise request analysis
+</p>
+
+<a href="/analytics">
+View Analytics
+</a>
+
+</div>
+</div>
+</body>
+</html>

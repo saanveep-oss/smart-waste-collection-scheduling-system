@@ -1,0 +1,102 @@
+<!--<div class="navbar">
+
+<div class="logo">
+EcoTrack
+</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+
+<a href="/dashboard">User Dashboard</a>
+
+<a href="/admin_dashboard">Admin Dashboard</a>
+
+<a href="/reports">Reports</a>
+
+
+<a href="/special_pickup">
+Special Pickup
+</a>
+
+
+
+<a href="/special_reports">
+Special Reports
+</a>
+
+
+<a href="/logout">Logout</a>
+
+</div>
+
+</div>-->
+
+
+<div class="navbar">
+
+<div class="logo">
+EcoTrack
+</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+
+{% if session.get('admin') %}
+
+<a href="/admin_dashboard">
+Admin Dashboard
+</a>
+
+<a href="/view_requests">
+Manage Requests
+</a>
+
+<a href="/manage_schedules">
+Schedules
+</a>
+
+<a href="/manage_areas">
+Areas
+</a>
+
+<a href="/analytics">
+Analytics
+</a>
+
+<a href="/view_special_requests">
+Special Requests
+</a>
+
+{% else %}
+
+<a href="/dashboard">
+User Dashboard
+</a>
+
+<a href="/pickup">
+Pickup
+</a>
+
+<a href="/reports">
+Reports
+</a>
+
+<a href="/special_pickup">
+Special Pickup
+</a>
+
+<a href="/special_reports">
+Special Reports
+</a>
+
+{% endif %}
+
+<a href="/logout">
+Logout
+</a>
+
+</div>
+
+</div>

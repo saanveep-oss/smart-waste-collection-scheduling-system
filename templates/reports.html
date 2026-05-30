@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Reports</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Pickup Request Reports</h1>
+
+<p style="text-align:center;">
+
+Track all submitted waste pickup requests
+and their current status.
+
+</p>
+
+{% if reports|length == 0 %}
+
+<p>No pickup requests submitted yet.</p>
+
+{% endif %}
+
+{% if reports|length > 0 %}
+
+<table class="schedule-table">
+
+<tr>
+
+<th>Request ID</th>
+
+<th>Area</th>
+
+<th>Zone</th>
+
+<th>Pickup Day</th>
+
+<th>Pickup Date</th>
+
+<th>Pickup Time</th>
+
+<th>Waste Weight</th>
+
+<th>Status</th>
+
+<th>Add Notes</th>
+
+</tr>
+
+
+{% for row in reports %}
+
+<tr>
+
+<td>
+{{ row[0] }}
+</td>
+
+<td>
+{{ row[1] }}
+</td>
+
+<td>
+{{ row[2] }}
+</td>
+
+<td>
+{{ row[3] }}
+</td>
+
+<td>
+
+{% if row[4] %}
+
+{{ row[4].strftime('%d-%m-%Y') }}
+
+{% else %}
+
+Not Assigned
+
+{% endif %}
+
+</td>
+
+<td>
+{{ row[5] }}
+</td>
+
+<!--<td>
+{{ row[6] }}
+</td>
+
+<td>
+
+<span class="{{ row[7]|lower }}">
+
+{{ row[7] }}
+
+</span>
+
+</td>-->
+
+<td>{{ row[6] }}</td>
+
+<td>
+
+<span class="{{ row[7]|lower }}">
+
+{{ row[7] }}
+
+</span>
+
+</td>
+
+<td>{{ row[8] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+<a href="/dashboard">Back</a>
+
+</body>
+
+</html>

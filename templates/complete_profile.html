@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Complete Profile</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <h1>
+            Complete Resident Profile
+        </h1>
+
+        <p class="profile-subtitle">
+            Please complete your residential details to continue.
+        </p>
+
+        <form method="POST">
+
+            <label>
+                House / Apartment Name
+            </label>
+
+            <input
+            type="text"
+            name="house_no"
+            placeholder="Enter house number or apartment name"
+            required>
+
+
+            <label>
+                Full Address
+            </label>
+
+            <textarea
+            name="address"
+            placeholder="Enter complete address"
+            required></textarea>
+
+
+            <label>
+                Landmark (Optional)
+            </label>
+
+            <input
+            type="text"
+            name="landmark"
+            placeholder="Nearby landmark">
+
+
+            <label>
+                Select Area
+            </label>
+
+            <select
+            name="area_id"
+            id="areaDropdown"
+            required>
+
+                <option value="">
+                    Select Area
+                </option>
+
+                {% for area in areas %}
+
+                <option value="{{ area[0] }}">
+                    {{ area[1] }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <label>
+                Zone
+            </label>
+
+            <input
+            type="text"
+            id="zone"
+            readonly>
+
+
+            <button type="submit">
+
+                Save Profile
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const areaDropdown = document.getElementById('areaDropdown');
+
+const zoneInput = document.getElementById('zone');
+
+
+const areaZones = {
+
+    "1": "East Zone",
+    "2": "East Zone",
+    "3": "East Zone",
+
+    "4": "South Zone",
+    "5": "South Zone",
+    "6": "South Zone",
+
+    "7": "West Zone",
+    "8": "West Zone",
+    "9": "West Zone",
+
+    "10": "North Zone",
+    "11": "North Zone",
+    "12": "North Zone",
+
+    "13": "Central Zone",
+    "14": "Central Zone",
+    "15": "Central Zone"
+
+};
+
+
+areaDropdown.addEventListener('change', function() {
+
+    zoneInput.value = areaZones[this.value];
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Special Pickup Request</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="form-container">
+
+<h1>Special Pickup Request</h1>
+
+<h3>
+
+Participation Score:
+{{ participation_score }}
+
+</h3>
+
+<h3>
+
+Eligibility Status:
+
+<span class="{{ eligibility_status|lower }}">
+
+{{ eligibility_status }}
+
+</span>
+
+</h3>
+
+<form method="POST">
+
+<label>
+Name
+</label>
+
+<input
+type="text"
+value="{{ user[0] }}"
+readonly
+>
+
+<label>
+Phone
+</label>
+
+<input
+type="text"
+value="{{ user[1] }}"
+readonly
+>
+
+<label>
+Area
+</label>
+
+<input
+type="text"
+value="{{ area_name }}"
+readonly
+>
+
+<label>
+Zone
+</label>
+
+<input
+type="text"
+value="{{ user[3] }}"
+readonly
+>
+
+<label>
+Pickup Reason
+</label>
+
+<textarea
+name="pickup_reason"
+required
+></textarea>
+
+<label>
+Priority Level
+</label>
+
+<select
+name="priority_level"
+required
+>
+
+<option value="">
+Select Priority
+</option>
+
+<option value="HIGH">
+HIGH
+</option>
+
+<option value="MEDIUM">
+MEDIUM
+</option>
+
+<option value="LOW">
+LOW
+</option>
+
+</select>
+
+
+
+
+<label>
+Preferred Pickup Date
+</label>
+
+
+<input
+type="date"
+name="preferred_date"
+id="preferred_date"
+required
+onchange="updateDay()"
+>
+
+<label>
+Preferred Day
+</label>
+
+<input
+type="text"
+id="preferred_day"
+readonly
+>
+
+
+<label>
+Preferred Time
+</label>
+
+<select
+name="preferred_time"
+required
+>
+
+<option value="">
+Select Time
+</option>
+
+<option value="Morning (6 AM - 10 AM)">
+Morning (6 AM - 10 AM)
+</option>
+
+<option value="Afternoon (11 AM - 2 PM)">
+Afternoon (11 AM - 2 PM)
+</option>
+
+<option value="Evening (3 PM - 6 PM)">
+Evening (3 PM - 6 PM)
+</option>
+
+</select>
+
+
+
+
+
+<label>
+Did You Segregate Waste?
+</label>
+
+<select
+name="waste_segregated"
+required
+>
+
+<option value="">
+Select
+</option>
+
+<option value="Yes">
+Yes
+</option>
+
+<option value="No">
+No
+</option>
+
+</select>
+
+<button type="submit">
+
+Submit Special Request
+
+</button>
+
+</form>
+
+</div>
+
+
+<script>
+
+function updateDay() {
+
+    const dateInput = document.getElementById('preferred_date').value;
+
+    const dayField = document.getElementById('preferred_day');
+
+    const days = [
+
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+
+    ];
+
+    const selectedDate = new Date(dateInput);
+
+    const dayName = days[selectedDate.getDay()];
+
+    dayField.value = dayName;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

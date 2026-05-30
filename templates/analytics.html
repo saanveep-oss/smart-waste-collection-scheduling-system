@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+Analytics Dashboard
+
+</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>
+
+Waste Analytics Dashboard
+
+</h1>
+
+<!-- AREA ANALYTICS -->
+
+<h2>
+
+Area-wise Pickup Requests
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Area</th>
+
+<th>Total Requests</th>
+
+</tr>
+
+{% for row in area_analytics %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<!-- ZONE ANALYTICS -->
+
+<h2>
+
+Zone-wise Pickup Requests
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Zone</th>
+
+<th>Total Requests</th>
+
+</tr>
+
+{% for row in zone_analytics %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<!-- STATUS ANALYTICS -->
+
+<h2>
+
+Request Status Analytics
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Status</th>
+
+<th>Total</th>
+
+</tr>
+
+{% for row in status_analytics %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

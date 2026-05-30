@@ -1,0 +1,177 @@
+<!--<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>User Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>User Dashboard</h1>
+
+<div class="info-section">
+
+<div class="card">
+
+<h2>Collection Schedule</h2>
+
+<p>
+View area-wise collection timings
+</p>
+
+<a href="/schedules">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Pickup Requests</h2>
+
+<p>
+Request additional waste pickup
+</p>
+
+<a href="/pickup">
+Open
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Reports</h2>
+
+<p>
+Track your submitted requests
+</p>
+
+<a href="/reports">
+Open
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>User Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h2 style="text-align:center;
+margin-top:20px;">
+
+Welcome,
+{{ session['user_name'] }}
+
+</h2> 
+    
+<h1>User Dashboard</h1>
+
+<div class="info-section">
+
+<div class="card">
+
+<h2>Waste Collection Schedule</h2>
+
+<p>
+View area-wise collection timings
+</p>
+
+<a href="/schedules">
+View Schedules
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Waste Pickup Requests</h2>
+
+<p>
+Request additional waste pickup
+</p>
+
+<a href="/pickup">
+Request Pickup
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Pickup Activity Reports</h2>
+
+<p>
+Track your submitted requests
+</p>
+
+<a href="/reports">
+View Reports
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Special Pickup Request</h2>
+
+<p>
+
+Request priority waste pickup service
+
+</p>
+
+<a href="/special_pickup">
+
+Request Pickup
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Special Pickup Reports</h2>
+
+<p>
+
+View your priority pickup requests
+
+</p>
+
+<a href="/special_reports">
+
+View Reports
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

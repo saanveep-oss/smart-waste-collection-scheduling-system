@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>View Requests</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Pickup Requests</h1>
+
+<div class="filter-buttons">
+
+<a href="/view_requests">
+All
+</a>
+
+<a href="/view_requests?status=Pending">
+Pending
+</a>
+
+<a href="/view_requests?status=Approved">
+Approved
+</a>
+
+<a href="/view_requests?status=Completed">
+Completed
+</a>
+
+<a href="/view_requests?status=Missed">
+Missed
+</a>
+
+<a href="/view_requests?status=Rejected">
+Rejected
+</a>
+
+</div>
+
+<!--{% if requests|length == 0 %}
+
+<h2 style="text-align:center;">
+No Requests Available
+</h2>
+
+{% endif %}-->
+
+{% if requests|length > 0 %}
+
+<table>
+
+<tr>
+
+<th>Request ID</th>
+
+<th>User</th>
+
+<th>Area</th>
+
+<th>Zone</th>
+
+<th>Pickup Day</th>
+
+<th>Pickup Date</th>
+
+<th>Pickup Time</th>
+
+<th>Waste Weight</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+{% for request in requests %}
+
+<tr>
+
+<td>{{ request[0] }}</td>
+
+<td>{{ request[1] }}</td>
+
+<td>{{ request[2] }}</td>
+
+<td>{{ request[3] }}</td>
+
+<td>{{ request[4] }}</td>
+
+<td>
+
+{% if request[5] %}
+
+{{ request[5].strftime('%d-%m-%Y') }}
+
+{% else %}
+
+Not Assigned
+
+{% endif %}
+
+</td>
+
+<td>{{ request[6] }}</td>
+
+<td>
+
+{% if request[7] %}
+
+{{ request[7] }}
+
+{% endif %}
+
+</td>
+
+<td>
+
+<span class="{{ request[8]|lower }}">
+
+{{ request[8] }}
+
+</span>
+
+</td>
+
+<td>
+
+<a href="/update_request_status/{{ request[0] }}/Approved">
+
+Approve
+
+</a>
+
+<br><br>
+
+<a href="/update_request_status/{{ request[0] }}/Completed">
+
+Complete
+
+</a>
+
+<br><br>
+
+<a href="/update_request_status/{{ request[0] }}/Missed">
+
+Missed
+
+</a>
+
+<br><br>
+
+<a href="/update_request_status/{{ request[0] }}/Rejected">
+
+Reject
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<h3 style="text-align:center;
+margin-top:40px;">
+
+No Pickup Requests Found
+
+</h3>
+
+{% endif %}
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Schedules</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Waste Collection Schedules</h1>
+
+<table class="schedule-table">
+
+<tr>
+
+<th>ID</th>
+
+<th>Zone</th>
+
+<th>Area</th>
+
+<th>Collection Day</th>
+
+<th>Collection Date</th>
+
+<th>Time Slot</th>
+
+</tr>
+
+
+{% for row in schedules %}
+
+<tr>
+
+<td>
+{{ row[0] }}
+</td>
+
+<td>
+{{ row[1] }}
+</td>
+
+<td>
+{{ row[2] }}
+</td>
+
+<td>
+{{ row[3] }}
+</td>
+
+<td>
+
+{{ row[4].strftime('%d-%m-%Y') }}
+
+</td>
+
+<td>
+{{ row[5] }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/dashboard">Back</a>
+
+</body>
+
+</html>

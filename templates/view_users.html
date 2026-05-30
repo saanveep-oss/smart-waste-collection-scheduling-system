@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>View Users</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Registered Users</h1>
+
+<div class="form-container">
+
+<form method="GET">
+
+<input
+type="text"
+name="search"
+placeholder="Search by Name, Email, Phone or Zone"
+>
+
+<button type="submit">
+Search
+</button>
+
+</form>
+
+</div>
+
+{% if users|length == 0 %}
+
+<h2 style="text-align:center;">
+No Users Available
+</h2>
+
+{% endif %}
+
+{% if users|length > 0 %}
+
+<table>
+
+<tr>
+
+<th>User ID</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Address</th>
+
+<th>Zone</th>
+
+<th>Participation Score</th>
+
+</tr>
+
+{% if users %}
+
+{% for row in users %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[2] }}</td>
+
+<td>{{ row[3] }}</td>
+
+<td>{{ row[4] }}</td>
+
+<td>{{ row[5] }}</td>
+
+<td>{{ row[6] }}</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="6">
+
+No Users Found
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</table>
+
+{% endif %}
+
+</body>
+
+</html>
+
+

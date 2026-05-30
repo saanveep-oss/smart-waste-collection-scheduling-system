@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Schedule</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>Edit Schedule</h1>
+
+<div class="form-container">
+
+<form method="POST">
+
+<input type="text"
+name="collection_day"
+value="{{ schedule[2] }}"
+required>
+
+<input type="text"
+name="time_slot"
+value="{{ schedule[3] }}"
+required>
+
+<button type="submit">
+Update Schedule
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

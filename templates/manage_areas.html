@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Manage Areas</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Manage Areas</h1>
+
+<div class="form-container">
+
+    <form method="POST">
+
+        <input
+        type="text"
+        name="area_name"
+        placeholder="Enter Area Name"
+        required>
+
+        <select name="zone" required>
+
+            <option value="">
+                Select Zone
+            </option>
+
+            <option value="East Zone">
+                East Zone
+            </option>
+
+            <option value="West Zone">
+                West Zone
+            </option>
+
+            <option value="North Zone">
+                North Zone
+            </option>
+
+            <option value="South Zone">
+                South Zone
+            </option>
+
+            <option value="Central Zone">
+                Central Zone
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Add Area
+        </button>
+
+    </form>
+
+</div>
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+        <th>Area Name</th>
+        <th>Zone</th>
+        <th>Delete</th>
+
+    </tr>
+
+    {% for area in areas %}
+
+    <tr>
+
+        <td>{{ area[0] }}</td>
+
+        <td>{{ area[1] }}</td>
+
+        <td>{{ area[2] }}</td>
+
+        <td>
+
+            <a href="/delete_area/{{ area[0] }}">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+
+</html>

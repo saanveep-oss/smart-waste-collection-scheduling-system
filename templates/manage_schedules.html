@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Manage Schedules</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Manage Collection Schedules</h1>
+
+<div class="schedule-form">
+
+<form method="POST">
+
+<label>
+
+Select Zone
+
+</label>
+
+<select id="zone" onchange="filterAreas()" required>
+
+<option value="">
+
+Select Zone
+
+</option>
+
+<option value="East Zone">
+
+East Zone
+
+</option>
+
+<option value="South Zone">
+
+South Zone
+
+</option>
+
+<option value="West Zone">
+
+West Zone
+
+</option>
+
+<option value="North Zone">
+
+North Zone
+
+</option>
+
+<option value="Central Zone">
+
+Central Zone
+
+</option>
+
+</select>
+
+
+<label>
+
+Select Area
+
+</label>
+
+<select name="area_id" id="area" required>
+
+<option value="">
+
+Select Area
+
+</option>
+
+{% for area in areas %}
+
+<option
+
+value="{{ area[0] }}"
+
+data-zone="{{ area[2] }}"
+
+>
+
+{{ area[1] }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+<label>
+Collection Day
+</label>
+
+<select name="collection_day" required>
+
+<option value="">
+Select Day
+</option>
+
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+<option>Saturday</option>
+
+</select>
+
+
+<label>
+Collection Date
+</label>
+
+<input
+type="date"
+name="collection_date"
+required>
+
+
+<label>
+Time Slot
+</label>
+
+<select name="time_slot" required>
+
+<option value="">
+Select Time Slot
+</option>
+
+<option>Morning (6 AM - 10 AM)</option>
+
+<option>Afternoon (11 AM - 2 PM)</option>
+
+<option>Evening (3 PM - 6 PM)</option>
+
+</select>
+
+<button type="submit">
+
+Add Schedule
+
+</button>
+
+</form>
+
+</div>
+
+{% if schedules|length == 0 %}
+
+<h2 style="text-align:center;">
+No Schedules Available
+</h2>
+
+{% endif %}
+
+{% if schedules|length > 0 %}
+
+<h2>
+
+Collection Schedules
+
+</h2>
+
+<table class="schedule-table">
+
+<tr>
+
+<th>Schedule ID</th>
+
+<th>Zone</th>
+
+<th>Area</th>
+
+<th>Collection Day</th>
+
+<th>Collection Date</th>
+
+<th>Time Slot</th>
+
+<th>Delete</th>
+
+</tr>
+
+{% for row in schedules %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[2] }}</td>
+
+<td>{{ row[3] }}</td>
+
+<td>{{ row[4].strftime('%d-%m-%Y') }}</td>
+
+<td>{{ row[5] }}</td>
+
+<td>
+
+<a href="/delete_schedule/{{ row[0] }}">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+<script>
+
+function filterAreas() {
+
+    let selectedZone = document.getElementById("zone").value;
+
+    let areaDropdown = document.getElementById("area");
+
+    let options = areaDropdown.options;
+
+    for (let i = 0; i < options.length; i++) {
+
+        let zone = options[i].getAttribute("data-zone");
+
+        if (
+            zone === selectedZone ||
+            options[i].value === ""
+        ) {
+
+            options[i].style.display = "block";
+
+        }
+
+        else {
+
+            options[i].style.display = "none";
+
+        }
+    }
+
+    areaDropdown.value = "";
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>User Register</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+<h1>User Registration</h1>
+
+<form method="POST">
+
+<input type="text"
+name="name"
+placeholder="Enter Name"
+required>
+
+<input type="email"
+name="email"
+placeholder="Enter Email"
+required>
+
+<input type="text"
+name="phone"
+placeholder="Enter Phone Number"
+required>
+
+<input type="password"
+name="password"
+placeholder="Enter Password"
+required>
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+<p style="margin-top:15px;">
+
+Already have an account?
+
+<a href="/login">
+Login Here
+</a>
+
+</p>
+
+</div>
+
+</body>
+
+</html>

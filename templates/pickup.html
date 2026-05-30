@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Pickup Request</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="form-container">
+
+<h1>Waste Pickup Request</h1>
+
+<form method="POST">
+
+<label>
+
+Name
+
+</label>
+
+<input
+type="text"
+name="user_name"
+value="{{ user[0] }}"
+readonly
+>
+
+<label>
+
+Phone Number
+
+</label>
+
+<input
+type="text"
+name="phone"
+value="{{ user[1] }}"
+readonly
+>
+
+<label>
+
+Address
+
+</label>
+
+<textarea
+name="address"
+readonly
+>{{ user[3] }}
+</textarea>
+
+<label>
+
+Nearby Landmark
+
+</label>
+
+<input
+type="text"
+name="landmark"
+value="{{ user[4] }}"
+readonly
+>
+
+<label>
+
+Area
+
+</label>
+
+<input
+type="text"
+value="{{ area_name }}"
+readonly
+>
+
+<label>
+
+Zone
+
+</label>
+
+<input
+type="text"
+value="{{ user[6] }}"
+readonly
+>
+
+<input
+type="hidden"
+name="area_id"
+value="{{ user[5] }}"
+>
+
+<label>
+Scheduled Collection Day
+</label>
+
+<input
+type="text"
+id="pickup_day"
+readonly
+>
+
+<label>
+Scheduled Pickup Date
+</label>
+
+<input
+type="text"
+id="pickup_date"
+readonly
+>
+
+<label>
+Scheduled Pickup Time
+</label>
+
+<input
+type="text"
+id="pickup_time"
+readonly
+>
+
+<input type="text"
+name="waste_weight"
+placeholder="Approx Waste Weight (Optional)">
+
+<textarea
+name="additional_notes"
+placeholder="Additional Notes"></textarea>
+
+<button type="submit">
+Submit Pickup Request
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+    let area_id = "{{ user[5] }}";
+
+    fetch("/get_schedule/" + area_id)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("pickup_day").value = data.collection_day;
+
+        document.getElementById("pickup_date").value = data.collection_date;
+
+        document.getElementById("pickup_time").value = data.time_slot;
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>

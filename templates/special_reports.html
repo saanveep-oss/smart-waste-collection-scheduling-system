@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Special Pickup Reports</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<h1>Special Pickup Reports</h1>
+
+{% if reports|length > 0 %}
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Area</th>
+
+<th>Zone</th>
+
+<th>Reason</th>
+
+<th>Priority</th>
+
+<th>Preferred Day</th>
+
+<th>Preferred Date</th>
+
+<th>Preferred Time</th>
+
+<th>Segregated</th>
+
+<th>Score</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+</tr>
+
+{% for row in reports %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[2] }}</td>
+
+<td>{{ row[3] }}</td>
+
+<td>
+
+<span class="{{ row[4]|lower }}">
+
+{{ row[4] }}
+
+</span>
+
+</td>
+
+<td>{{ row[5] }}</td>
+
+<td>
+
+{% if row[6] %}
+
+{{ row[6].strftime('%d-%m-%Y') }}
+
+{% endif %}
+
+</td>
+
+<td>{{ row[7] }}</td>
+
+<td>{{ row[8] }}</td>
+
+<td>{{ row[9] }}</td>
+
+<td>
+
+<span class="{{ row[7]|lower }}">
+
+{{ row[7] }}
+
+</span>
+
+</td>
+
+<td>{{ row[8].strftime('%d-%m-%Y') }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<h3 style="text-align:center;">
+
+No Special Pickup Requests Found
+
+</h3>
+
+{% endif %}
+
+</body>
+
+</html>
